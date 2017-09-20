@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inOut</title>
+</head>
+<body>
+
+    <h1>Test Grading Example</h1>
+
+    <input type="text" id="inputText" onchange="inputEntered()" onkeypress="keyPressed()"/>
+    <div> output <span id="gradeHere"></span></div>
+
+    <script>
+
+        function inputEntered() {
+
+            var input = document.getElementById("inputText").value;
+            var grade
+
+            if (isNaN(input)) {
+                grade = "Please enter a numerical value";
+            } else if (input < 40) {
+                grade = "Fail";
+            } else if (input <= 54) {
+                grade = "D";
+            } else if (input <= 69) {
+                grade = "C";
+            } else if (input <= 84) {
+                grade = "B";
+            } else {
+                grade = "A";
+            }
+
+            document.getElementById("gradeHere").innerHTML = grade;
+
+        }
+
+    </script>
+</body>
+</html>
