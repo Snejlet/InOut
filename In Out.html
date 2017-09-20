@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inout</title>
+</head>
+<body>
+
+    <h1> in out example </h1>
+
+    <input type="text" id="inputText" onchange="inputEntered()" onkeypress="keyPressed()"/>
+    <div> output <span id="nameHere"></span> </div>
+
+    <input type="text" id="gradeValue" onchange="inputEntered()" onkeypress="keyPressed()"/>
+    <div> Your Grade is: <span id="gradeHere"></span> </div>
+    <script>
+
+        function inputEntered() {
+            console.log("inputEntered ran");
+            var input = document.getElementById("inputText").value;
+            var userName = document.getElementById("inputText").value;
+
+
+
+
+            //This checks if the input is NotaNumber, else it will multiply it by two.
+            // isNaN is the part of this that checks the value of input. Literally stands for isNotaNumber.
+            if (isNaN(input)) {
+                document.getElementById("nameHere").innerHTML = input + " (That probably should have been a number)";
+            } else {
+                document.getElementById("nameHere").innerHTML = input * 2;
+            }
+        }
+
+        function inputEntered() {
+            var grade = document.getElementById("gradeValue").value;
+            var output
+
+            if (isNaN(grade)) {
+                output = "Please enter a numerical value";
+            } else if (grade < 40) {
+                output = "fail";
+            } else if (grade <= 54) {
+                output = "D";
+            } else if (grade <= 69) {
+                output = "C";
+            } else if (grade <= 84) {
+                output = "B"
+            } else {
+                output = "A";
+            }
+
+            document.getElementByID("gradeHere").innerHTML = output;
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>
