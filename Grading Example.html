@@ -28,8 +28,10 @@
                 grade = "C";
             } else if (input <= 84) {
                 grade = "B";
-            } else {
+            } else if (input <= 100) {
                 grade = "A";
+            } else if (input > 100) {
+                grade = "Tell a better lie."
             }
 
             document.getElementById("gradeHere").innerHTML = grade;
