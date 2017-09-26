@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div style="display:block" id="tabA">
+        Info A
+        <button onclick="showNext('tabA','tabB')">Next</button>
+    </div>
+    <div style="display:none" id="tabB">
+        Info B
+        <button onclick="showNext('tabB', 'tabA')">Previous</button>
+        <button onclick="showNext('tabB', 'tabC')">Next</button>
+    </div>
+    <div style="display:none" id="tabC">
+        Info C
+        <button onclick="showNext('tabC', 'tabB')">Previous</button>
+        <button onclick="showNext('tabC', 'tabA')">Return</button>
+    </div>
+
+    <script>
+        function showNext(thisDiv, nextDiv) {
+
+            //This creates variables which contain the div of the current page, and the page which follows (based on
+            //button which was clicked.
+            var thisDiv = document.getElementById(thisDiv);
+            var nextDiv = document.getElementById(nextDiv);
+
+            //This changes the visibility of the currently displayed div, and makes the next div visible.
+            thisDiv.style.display = "none";
+            nextDiv.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
