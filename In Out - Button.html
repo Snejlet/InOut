@@ -6,6 +6,8 @@
 </head>
 <body>
 
+    <h1>Button testing code</h1>
+
     <div>
         <input type="text" id="inputHere" />
     </div>
@@ -18,9 +20,10 @@
 
         function buttonClicked() {
 
+            //This will take the value of the input box text, and output it into the div when the button is clicked.
             var inputElem = document.getElementById("inputHere");
             var output = inputElem.value;
-            input.value = "";
+            inputElem.value = "";
 
             document.getElementById("outputHere").innerHTML = output;
 
