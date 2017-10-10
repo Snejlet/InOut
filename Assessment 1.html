@@ -6,21 +6,54 @@
 </head>
 <body>
 
-    <div>
-        <input type="text" id="idNumber"/>
-        <input type="text" id="filmName"/>
-        <input type="date" id="filmDate"/>
-    </div>
+    <input type="text" id="idNumber">I.D. Number</input>
+    <input type="text" id="filmName">Film Name</input>
+    <input type="date" id="releaseDate">Release Date</input>
 
-    <div>
-        <button onclick="buttonClicked()">Add</button>
-    </div>
+    <button id="addFilm" onclick="inputEntered()">Add Film</button>
+
+    <table id="list">
+        <tr>
+            <th>I.D. Number</th>
+            <th>Film Name</th>
+            <th>Release Date</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </table>
 
     <script>
 
-        function buttonClicked() {
+        function inputEntered() {
 
-            
+            //this gets the values from the HTML inputs
+            var idNumber = document.getElementById("idNumber").value;
+            var filmName = document.getElementById("filmName").value;
+            var releaseDate = document.getElementById("releaseDate").value;
+
+            var deleteButton = document.createElement("deleteButton");
+
+            //this finds the table ID'd as "list"
+            var table = document.getElementById("list");
+            //this inserts a row at the first position after the <th>
+            var row = table.insertRow();
+            //this creates a variable for each cell of the newly created row
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+            //this populates the cell variables with the values from the <input>s
+            cell1.innerHTML = idNumber;
+            cell2.innerHTML = filmName;
+            cell3.innerHTML = releaseDate;
+            cell5.innerHTML = deleteButton;
+
+            //this clears the text from the inputs
+            document.getElementById("idNumber").value = "";
+            document.getElementById("filmName").value = "";
+            document.getElementById("releaseDate").value = "";
 
         }
 
