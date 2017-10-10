@@ -31,8 +31,6 @@
             var filmName = document.getElementById("filmName").value;
             var releaseDate = document.getElementById("releaseDate").value;
 
-            var deleteButton = document.createElement("deleteButton");
-
             //this finds the table ID'd as "list"
             var table = document.getElementById("list");
             //this inserts a row at the first position after the <th>
@@ -48,7 +46,7 @@
             cell1.innerHTML = idNumber;
             cell2.innerHTML = filmName;
             cell3.innerHTML = releaseDate;
-            cell5.innerHTML = deleteButton;
+            cell5.innerHTML = '<button input type="Button" id="delete">X</button>'
 
             //this clears the text from the inputs
             document.getElementById("idNumber").value = "";
