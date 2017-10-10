@@ -30,6 +30,9 @@
             var idNumber = document.getElementById("idNumber").value;
             var filmName = document.getElementById("filmName").value;
             var releaseDate = document.getElementById("releaseDate").value;
+            var update = '<input type=text id="updateId" display="block">'
+            +'<input type=text id="updateName" display="block">'
+                +'<input type="date" id="updateDate" display="block">';
 
             //this finds the table ID'd as "list"
             var table = document.getElementById("list");
@@ -46,12 +49,32 @@
             cell1.innerHTML = idNumber;
             cell2.innerHTML = filmName;
             cell3.innerHTML = releaseDate;
-            cell5.innerHTML = '<button input type="Button" id="delete">X</button>'
+            cell4.innerHTML = '<input type=button value="Update" onclick="updateRow(this)">'+update;
+            cell5.innerHTML = '<input type=button value="X" onclick="deleteRow(this)">';
 
             //this clears the text from the inputs
             document.getElementById("idNumber").value = "";
             document.getElementById("filmName").value = "";
             document.getElementById("releaseDate").value = "";
+
+        }
+        //this function deletes the row in which the delete button was clicked.
+        function deleteRow(r) {
+
+            var thisRow = r.parentNode.parentNode.rowIndex;
+
+            document.getElementById("list").deleteRow(thisRow);
+
+        }
+
+        function updateRow (r) {
+
+            var updateThis = document.getElementById("updateId");
+            if (updateThis.style.display = "block") {
+                updateThis.style.display = "none";
+            } else {
+                updateThis.style.display = "block"
+            }
 
         }
 
