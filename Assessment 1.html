@@ -30,9 +30,11 @@
             var idNumber = document.getElementById("idNumber").value;
             var filmName = document.getElementById("filmName").value;
             var releaseDate = document.getElementById("releaseDate").value;
-            var update = '<input type=text id="updateId" display="block">'
-            +'<input type=text id="updateName" display="block">'
-                +'<input type="date" id="updateDate" display="block">';
+            var update = '<input type=text id="updateId" style="display:none" value="I.D.">'
+                +'<input type=text id="updateName" style="display:none" value="Film Name">'
+                +'<input type="date" id="updateDate" style="display:none" value="Release Date">'
+                +'<input type="button" id="updateDone" style="display:none" value="Done" onclick="updateInfo(this)">'
+
 
             //this finds the table ID'd as "list"
             var table = document.getElementById("list");
@@ -67,14 +69,44 @@
 
         }
 
-        function updateRow (r) {
+        function updateRow() {
 
-            var updateThis = document.getElementById("updateId");
-            if (updateThis.style.display = "block") {
-                updateThis.style.display = "none";
+            var updateIdInput = document.getElementById("updateId");
+            if (updateIdInput.style.display = "none") {
+                updateIdInput.style.display = "block";
             } else {
-                updateThis.style.display = "block"
+                updateIdInput.style.display = "none";
             }
+
+            var updateNameInput = document.getElementById("updateName");
+            if (updateNameInput.style.display = "none") {
+                updateNameInput.style.display = "block";
+            } else {
+                updateNameInput.style.display = "none";
+            }
+
+            var updateDateInput = document.getElementById("updateDate");
+            if (updateDateInput.style.display = "none") {
+                updateDateInput.style.display = "block";
+            } else {
+                updateDateInput.style.display = "none";
+            }
+
+            var updateDone = document.getElementById("updateDone");
+            if (updateDone.style.display = "none") {
+                updateDone.style.display = "block";
+            } else {
+                updateDone.style.display = "none";
+            }
+
+        }
+
+        function updateInfo(thisElem) {
+
+            var newId = document.getElementById("updateId").value;
+
+            var rowElem = thisElem.closest('tr');
+            row.getElementByTagName('td')[0].innerHTML = newId;
 
         }
 
