@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Assessment 1</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+
 </head>
 <body>
+
+    <div>Please input film information below:</div>
 
     <input type="text" id="idNumber">I.D. Number</input>
     <input type="text" id="filmName">Film Name</input>
@@ -12,7 +21,9 @@
 
     <button id="addFilm" onclick="inputEntered()">Add Film</button>
 
-    <table id="list">
+    <h1 style="text-align:center;">Film Database</h1>
+
+    <table id="list" style="width:80%">
         <tr>
             <th>I.D. Number</th>
             <th>Film Name</th>
@@ -104,9 +115,18 @@
         function updateInfo(thisElem) {
 
             var newId = document.getElementById("updateId").value;
+            var newName = document.getElementById("updateName").value;
+            var newDate = document.getElementById("updateDate").value;
 
             var rowElem = thisElem.closest('tr');
-            row.getElementByTagName('td')[0].innerHTML = newId;
+            rowElem.getElementsByTagName("td")[0].innerHTML = newId;
+            rowElem.getElementsByTagName("td")[1].innerHTML = newName;
+            rowElem.getElementsByTagName("td")[2].innerHTML = newDate;
+
+            document.getElementById("updateId").style.display = "none";
+            document.getElementById("updateName").style.display = "none";
+            document.getElementById("updateDate").style.display = "none";
+            document.getElementById("updateDone").style.display = "none";
 
         }
 
