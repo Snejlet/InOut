@@ -41,10 +41,11 @@
             var idNumber = document.getElementById("idNumber").value;
             var filmName = document.getElementById("filmName").value;
             var releaseDate = document.getElementById("releaseDate").value;
-            var update = '<input type=text id="updateId" style="display:none" value="I.D.">'
-                +'<input type=text id="updateName" style="display:none" value="Film Name">'
-                +'<input type="date" id="updateDate" style="display:none" value="Release Date">'
-                +'<input type="button" id="updateDone" style="display:none" value="Done" onclick="updateInfo(this)">'
+            var update = '<input type=text id="updateId" style="display:none">'
+                +'<input type=text id="updateName" style="display:none">'
+                +'<input type="date" id="updateDate" style="display:none">'
+                +'<input type="button" id="updateDone" style="display:none" value="Done" onclick="updateInfo(this)">';
+            var undo = '<button id="undoButton" style="display:none" onclick="undoUpdate(this)">Undo</button>'
 
 
             //this finds the table ID'd as "list"
@@ -62,7 +63,7 @@
             cell1.innerHTML = idNumber;
             cell2.innerHTML = filmName;
             cell3.innerHTML = releaseDate;
-            cell4.innerHTML = '<input type=button value="Update" onclick="updateRow(this)">'+update;
+            cell4.innerHTML = '<input type=button id="updateButton" value="Update" onclick="updateRow(this)">'+update+undo;
             cell5.innerHTML = '<input type=button value="X" onclick="deleteRow(this)">';
 
             //this clears the text from the inputs
@@ -81,6 +82,8 @@
         }
 
         function updateRow() {
+
+            document.getElementById("updateButton").style.display = "none";
 
             var updateIdInput = document.getElementById("updateId");
             if (updateIdInput.style.display = "none") {
@@ -127,6 +130,27 @@
             document.getElementById("updateName").style.display = "none";
             document.getElementById("updateDate").style.display = "none";
             document.getElementById("updateDone").style.display = "none";
+            document.getElementById("undoButton").style.display = "block";
+            document.getElementById("updateButton").style.display = "block";
+
+            document.getElementById("updateId").value = "";
+            document.getElementById("updateName").value = "";
+            document.getElementById("updateDate").value = "";
+
+        }
+
+        function undoUpdate(thisElem) {
+
+            //This is intended to be the undo button. Need to get the variables set up and holding the original
+            //cell values. Do this over the weekend.
+
+            document.getElementById("undoButton").style.display = "none";
+
+            var rowElem = thisElem.closest('tr');
+            rowElem.getElementsByTagName("td")[0].innerHTML = oldId;
+            rowElem.getElementsByTagName("td")[1].innerHTML = oldName;
+            rowElem.getElementsByTagName("td")[2].innerHTML = oldDate;
+
 
         }
 
