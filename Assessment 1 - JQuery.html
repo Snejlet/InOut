@@ -8,61 +8,62 @@
 
     <script>
 
-    $(document).ready(function(){
-        //this is the function for the addFilm button below the inputs
-        $("#addFilm").click(function(){
+        $(document).ready(function(){
+            //this is the function for the addFilm button below the inputs
+            $("#addFilm").click(function(){
 
-            //this creates variables to store the values of the inputs
-            var newId = $("#filmId").val();
-            var newName = $("#filmName").val();
-            var newDate = $("#filmDate").val();
-            var newUpdate = $('<button id="updateButton">Update Entry</button>');
-            var newDelete = $('<input id="deleteButton" type=button value="X" onclick="deleteRow(this)">');
+                //this creates variables to store the values of the inputs
+                var newId = $("#filmId").val();
+                var newName = $("#filmName").val();
+                var newDate = $("#filmDate").val();
+                var newUpdate = $('<button id="updateButton">Update Entry</button>,' +
+                    '<input id="newID" style="hidden:none"/>');
+                var newDelete = $('<input id="deleteButton" type=button value="X" onclick="deleteRow(this)">');
 
-            //this creates a new row in the table, and gives an id to each of the <td>'s
-            $("#filmListings").append('<tr><td id="newRowId"/>,' +
-                '<td id="newRowName"/>,' +
-                '<td id="newRowDate"/>,' +
-                '<td id="newRowUpdate"/>,' +
-                '<td id="newRowDelete"/></tr>');
+                //this creates a new row in the table, and gives an id to each of the <td>'s
+                $("#filmListings").append('<tr><td id="newRowId"/>,' +
+                    '<td id="newRowName"/>,' +
+                    '<td id="newRowDate"/>,' +
+                    '<td id="newRowUpdate"/>,' +
+                    '<td id="newRowDelete"/></tr>');
 
-            //this applies the values held in the above variables to the relevant <td> using the id set above
-            $("#newRowId").text(newId);
-            $("#newRowName").text(newName);
-            $("#newRowDate").text(newDate);
-            $("#newRowUpdate").append(newUpdate);
-            $("#newRowDelete").append(newDelete);
+                //this applies the values held in the above variables to the relevant <td> using the id set above
+                $("#newRowId").text(newId);
+                $("#newRowName").text(newName);
+                $("#newRowDate").text(newDate);
+                $("#newRowUpdate").append(newUpdate);
+                $("#newRowDelete").append(newDelete);
 
-            //this clears the id attribute of the <td>'s, otherwise all new rows would have the same id as the first one,
-            //and that would mean that all new information would go into the first row (despite a new row being
-            //created beneath it.
-            $('#newRowId').attr('id', "");
-            $('#newRowName').attr('id', "");
-            $('#newRowDate').attr('id', "");
-            $('#newRowUpdate').attr('id', "");
-            $('#newRowDelete').attr('id', "");
+                //this clears the id attribute of the <td>'s, otherwise all new rows would have the same id as the first one,
+                //and that would mean that all new information would go into the first row (despite a new row being
+                //created beneath it.
+                $('#newRowId').attr('id', "");
+                $('#newRowName').attr('id', "");
+                $('#newRowDate').attr('id', "");
+                $('#newRowUpdate').attr('id', "");
+                $('#newRowDelete').attr('id', "");
 
-            //this resets the values of the inputs to nothing, so they are ready for a new set of values
-            $('#filmId').val("");
-            $('#filmName').val("");
-            $('#filmDate').val("");
+                //this resets the values of the inputs to nothing, so they are ready for a new set of values
+                $('#filmId').val("");
+                $('#filmName').val("");
+                $('#filmDate').val("");
+            });
         });
-    });
 
 
-    // don't know how to do this with JQuery.
-    // when I called the button by its id i.e.
-    // $("#deleteButton).click(function(){}); e.t.c.
-    // it would not work at all. If I used
-    // $(this).click(function(){}); e.t.c.
-    // it would trigger whatever was inside of it whenever any button on the page was clicked.
-    function deleteRow(row){
+        // don't know how to do this with JQuery.
+        // when I called the button by its id i.e.
+        // $("#deleteButton).click(function(){}); e.t.c.
+        // it would not work at all. If I used
+        // $(this).click(function(){}); e.t.c.
+        // it would trigger whatever was inside of it whenever any button on the page was clicked.
+        function deleteRow(row){
 
-        var thisRow = row.parentNode.parentNode.rowIndex;
+            var thisRow = row.parentNode.parentNode.rowIndex;
 
-        document.getElementById("filmListings").deleteRow(thisRow);
+            document.getElementById("filmListings").deleteRow(thisRow);
 
-    }
+        }
 
     </script>
 
@@ -97,6 +98,8 @@
         </tr>
 
     </table>
+
+
 
 </body>
 </html>
